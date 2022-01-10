@@ -1,17 +1,17 @@
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
-    title: "clinton-portfolio",
+    title: "Clinton Manakane",
   },
   plugins: [
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
-    {
+    /* {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: "",
       },
-    },
+    }, */
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
