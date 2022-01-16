@@ -80,7 +80,7 @@ const Header = () => {
               Skills
             </Link>
 
-            <Link to="/works" className={navLink}>
+            <Link to="/projects" className={navLink}>
               Some of my work
             </Link>
 
