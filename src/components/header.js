@@ -1,10 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "gatsby";
+
+import { useStaticQuery, Link, graphql } from "gatsby";
 
 const Header = () => {
   //
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dropdownRef = useRef();
+
+  const content = JSON.parse(
+    useStaticQuery(graphql`
+      {
+        storyblokEntry(slug: { eq: "about" }) {
+          content
+        }
+      }
+    `).storyblokEntry.content
+  );
 
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
@@ -36,7 +47,7 @@ const Header = () => {
   };
 
   //
-  const header = "py-2 top-0 left-0 right-0 fixed bg-white bg-opacity-80";
+  const header = "py-2 top-0 left-0 right-0  bg-white bg-opacity-80 z-999";
   const nav = `relative container mx-auto flex items-center justify-between`;
   const menuClosed = `-translate-y-12 opacity-0 pointer-events-none transition-transform duration-100 absolute top-full right-0 bg-slate-100`;
   const menuOpened = `pt-4 pb-4 transform translate-y-0 opacity-100 pointer-events-auto transition-transform duration-100 absolute top-full right-0 rounded flex flex-col bg-slate-100`;
@@ -45,11 +56,13 @@ const Header = () => {
   return (
     <header ref={dropdownRef} className={header}>
       <nav className={nav}>
-        <div>
-          <div className="h-14 w-14 rounded-full bg-black"></div>
-        </div>
+        <img
+          className="h-14 w-14 rounded-full object-cover"
+          src={content.avatar.filename}
+          alt={content.avatar.alt}
+        />
 
-        <div className="relative outline">
+        <div className="relative flex items-center">
           <div
             onClick={closeMenu}
             role="group"
@@ -67,7 +80,7 @@ const Header = () => {
               Skills
             </Link>
 
-            <Link to="/#work" className={navLink}>
+            <Link to="/works" className={navLink}>
               Some of my work
             </Link>
 

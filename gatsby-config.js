@@ -6,12 +6,12 @@ module.exports = {
   plugins: [
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
-    /* {
+    {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: "",
+        trackingId: "299511761",
       },
-    }, */
+    },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
@@ -23,6 +23,15 @@ module.exports = {
     "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-source-storyblok",
+      options: {
+        accessToken: "dldZUMPKO5eZGthKskKwqAtt",
+        //localAssets: true, // Optional parameter to download the images to use with Gatsby Image Plugin
+        version: "published",
+        // languages: ['de', 'at'] // Optional parameter. Omission will retrieve all languages by default.
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
